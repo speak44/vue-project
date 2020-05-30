@@ -22,7 +22,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import {getCourses} from '@/api/course'
-console.log(process.env.BASE_URL, '这是个什么，我不太懂')
+console.log(process.env.BASE_URL, '用来判断是生产模式 还是开发模式')
 export default {
   name: 'Home',
   components: {
