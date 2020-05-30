@@ -29,9 +29,10 @@ export default {
   },
   methods:{
     logout(){
-      console.log('进来了吗')
-      this.$store.commit('user/logout')
+      this['user/logout']()
       this.$router.push('/')
+      // this.$store.commit('user/logout')
+      
     },
     ...mapActions(['user/logout'])
   },
