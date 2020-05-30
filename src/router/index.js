@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import store from '../store'
 Vue.use(VueRouter)
 
   const routes = [
@@ -78,7 +78,8 @@ const router = new VueRouter({
 // 首先判断登陆态 ture -if 去登录页面就跳转到首页；else 去其他页面就直接跳转
 // false - 去其他页面先去登录页面，去登陆页面就直接去
 router.beforeEach((to, from, next)=>{
-  if(window.isLogin){
+  // console.log(store.state.isLogin, 'store.isLogin')
+  if(store.state.isLogin){
     if(to.path==='/login'){
       next('/')
     }else{

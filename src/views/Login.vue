@@ -31,20 +31,29 @@ export default {
     login(){
       // console.log('454545kk')
       //window.isLogin
-      window.isLogin=true
+      // window.isLogin=true
+      // 修改vuex里面的状态，通过commit， 修改mutation变更状态
+      // this.$store.commit('login')
+      // 派发动作，触发actives
+      this.$store.dispatch('login', 'admin').then(()=>{
+        this.$router.push(this.$route.query.redirect)
+       }).catch(()=>{
+         alert('用户名错误')
+       })
        // 跳转使用的是查询参，路由url ？后面 “redirect”
        console.log(this.$route.query, 'this.$route.query')
-      this.$router.push(this.$route.query.redirect)
+      // this.$router.push(this.$route.query.redirect)
     },
     logout(){
-      window.isLogin=false
+      // window.isLogin=false
+      this.$store.commit('isLogin')
       this.$router.push('/')
     }
   },
   computed: {
     isLogin(){
-      console.log(window.isLogin)
-      return window.isLogin
+      // console.log(window.isLogin)
+      return this.$store.state.isLogin
     }
   }
 }
