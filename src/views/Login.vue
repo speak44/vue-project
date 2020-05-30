@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import {mapState, mapActions} from 'vuex';
 export default {
   name: 'Login',
   data(){
@@ -35,7 +36,8 @@ export default {
       // 修改vuex里面的状态，通过commit， 修改mutation变更状态
       // this.$store.commit('login')
       // 派发动作，触发actives
-      this.$store.dispatch('user/login', 'admin').then(()=>{
+      // this['user/login'] 这个是函数名
+      this['user/login']('admin').then(()=>{
         this.$router.push(this.$route.query.redirect)
        }).catch(()=>{
          alert('用户名错误')
@@ -48,13 +50,16 @@ export default {
       // window.isLogin=false
       this.$store.commit('user/isLogin')
       this.$router.push('/')
-    }
+    },
+    ...mapActions(['user/login', 'user/logout'])
   },
   computed: {
-    isLogin(){
-      console.log(this.$store.state, 'this.$store.state')
-      return this.$store.state.user.isLogin
-    }
+    // isLogin(){
+    //   console.log(this.$store.state, 'this.$store.state')
+    //   return this.$store.state.user.isLogin
+    // }
+    // mapState 写在computed 计算属性里面的，从而去修改计算属性的值
+    ...mapState('user', ['isLogin'])
   }
 }
 </script>
