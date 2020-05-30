@@ -35,7 +35,7 @@ export default {
       // 修改vuex里面的状态，通过commit， 修改mutation变更状态
       // this.$store.commit('login')
       // 派发动作，触发actives
-      this.$store.dispatch('login', 'admin').then(()=>{
+      this.$store.dispatch('user/login', 'admin').then(()=>{
         this.$router.push(this.$route.query.redirect)
        }).catch(()=>{
          alert('用户名错误')
@@ -46,14 +46,14 @@ export default {
     },
     logout(){
       // window.isLogin=false
-      this.$store.commit('isLogin')
+      this.$store.commit('user/isLogin')
       this.$router.push('/')
     }
   },
   computed: {
     isLogin(){
-      // console.log(window.isLogin)
-      return this.$store.state.isLogin
+      console.log(this.$store.state, 'this.$store.state')
+      return this.$store.state.user.isLogin
     }
   }
 }

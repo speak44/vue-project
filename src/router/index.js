@@ -79,7 +79,8 @@ const router = new VueRouter({
 // false - 去其他页面先去登录页面，去登陆页面就直接去
 router.beforeEach((to, from, next)=>{
   // console.log(store.state.isLogin, 'store.isLogin')
-  if(store.state.isLogin){
+  console.log(store.state.user.isLogin, 'store.state.user.isLogin')
+  if(store.state.user.isLogin){
     if(to.path==='/login'){
       next('/')
     }else{
