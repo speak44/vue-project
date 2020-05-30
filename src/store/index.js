@@ -8,5 +8,5 @@ export default new Vuex.Store({
   modules: {
     user
   },
-  strict: true
+  strict: true  // 严格模式，防止用户手动去修改状态
 })
